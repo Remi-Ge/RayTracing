@@ -36,6 +36,11 @@ public struct Position
         return new Position(a.x - b.x, a.y - b.y, a.z - b.z);
     }
 
+    public static Position operator -(Position a)
+    {
+        return new Position(-a.x, -a.y, -a.z);
+    }
+
     public static Position operator *(double a, Position b)
     {
         return new Position(a * b.x, a * b.y, a * b.z);
