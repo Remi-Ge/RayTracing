@@ -1,12 +1,16 @@
+using SixLabors.ImageSharp.PixelFormats;
+
 public class Sphere
 {
     public Position center;
     public double radius;
+    public Rgba32 color;
 
-    public Sphere(Position center, double radius)
+    public Sphere(Position center, double radius, Rgba32 color)
     {
         this.center = center;
         this.radius = radius;
+        this.color = color;
     }
 
     public bool intersect(Position origin, Position RayDirection, out Position intersection, out Position normalVector, out Position bounceVector)

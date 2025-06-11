@@ -3,6 +3,12 @@ public class Camera {
     public Orientation orientation = new Orientation(0, 0);
     private double fov = Math.PI / 2;
 
+    public Camera(Position position, Orientation orientation)
+    {
+        this.position = position;
+        this.orientation = orientation;
+    }
+
     public Position getRayVector(Screen screen, int x, int y)
     {
         double verticalFov = this.fov * screen.height / screen.width;
