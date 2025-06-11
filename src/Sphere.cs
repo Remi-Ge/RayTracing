@@ -9,7 +9,7 @@ public class Sphere
         this.radius = radius;
     }
 
-    public bool intersect(Position origin, Position RayDirection, out Position intersection)
+    public bool intersect(Position origin, Position RayDirection, out Position intersection, out Position normalVector)
     {
         Position oc = origin - this.center;
 
@@ -19,9 +19,11 @@ public class Sphere
 
         double discriminant = b * b - 4 * a * c;
 
+        intersection = Position.zero;
+        normalVector = Position.zero;
+
         if (discriminant < 0)
         {
-            intersection = Position.zero;
             return false;
         }
 
@@ -29,14 +31,18 @@ public class Sphere
         double t1 = (-b - sqrt_discriminant) / (2.0 * a);
         double t2 = (-b + sqrt_discriminant) / (2.0 * a);
 
-        if (t1 <= 0 && t2 <= 0)
+        double t = double.MaxValue;
+        if (t1 > 0 && t1 < t) t = t1;
+        if (t2 > 0 && t2 < t) t = t2;
+
+        if (t == double.MaxValue)
         {
-            intersection = Position.zero;
             return false;
         }
 
-        double t = t1 > t2 ? t1 : t2;
         intersection = origin + t * RayDirection;
+        normalVector = intersection - this.center;
+        normalVector.normalize();
         return true;
     }
 }

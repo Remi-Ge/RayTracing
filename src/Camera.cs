@@ -1,7 +1,7 @@
 public class Camera {
     public Position position = new Position(0, 0, 0);
-    private Orientation orientation = new Orientation(0, 0);
-    private double fov = Math.PI;
+    public Orientation orientation = new Orientation(0, 0);
+    private double fov = Math.PI / 2;
 
     public Position getRayVector(Screen screen, int x, int y)
     {
