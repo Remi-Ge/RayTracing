@@ -45,6 +45,11 @@ public struct Position
     {
         return new Position(a * b.x, a * b.y, a * b.z);
     }
+
+    public override string ToString()
+    {
+        return $"({this.x}, {this.y}, {this.z})";
+    }
 }
 
 public struct Orientation
@@ -63,5 +68,10 @@ public struct Orientation
         return new Position(Math.Cos(this.fi) * Math.Cos(this.teta),
                             Math.Cos(this.fi) * Math.Sin(this.teta),
                             Math.Sin(this.fi));
+    }
+
+    public override string ToString()
+    {
+        return $"({this.teta}, ({this.fi}))";
     }
 }

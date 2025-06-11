@@ -9,7 +9,7 @@ public class Sphere
         this.radius = radius;
     }
 
-    public bool intersect(Position origin, Position RayDirection, out Position intersection, out Position normalVector)
+    public bool intersect(Position origin, Position RayDirection, out Position intersection, out Position normalVector, out Position bounceVector)
     {
         Position oc = origin - this.center;
 
@@ -21,6 +21,7 @@ public class Sphere
 
         intersection = Position.zero;
         normalVector = Position.zero;
+        bounceVector = Position.zero;
 
         if (discriminant < 0)
         {
@@ -43,6 +44,7 @@ public class Sphere
         intersection = origin + t * RayDirection;
         normalVector = intersection - this.center;
         normalVector.normalize();
+        bounceVector = RayDirection - 2 * Position.dot(RayDirection, normalVector) * normalVector;
         return true;
     }
 }
