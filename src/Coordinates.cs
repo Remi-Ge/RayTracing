@@ -1,19 +1,44 @@
-public struct Position {
+public struct Position
+{
     public double x;
     public double y;
     public double z;
 
-    public Position(double x, double y, double z) {
+    public Position(double x, double y, double z)
+    {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public void normalize() {
+    public static Position zero => new Position(0, 0, 0);
+
+    public void normalize()
+    {
         double norm = Math.Sqrt(Math.Pow(this.x, 2) + Math.Pow(this.y, 2) + Math.Pow(this.z, 2));
         this.x /= norm;
         this.y /= norm;
         this.z /= norm;
+    }
+
+    public static double dot(Position p1, Position p2)
+    {
+        return p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
+    }
+
+    public static Position operator +(Position a, Position b)
+    {
+        return new Position(a.x + b.x, a.y + b.y, a.z + b.z);
+    }
+
+    public static Position operator -(Position a, Position b)
+    {
+        return new Position(a.x - b.x, a.y - b.y, a.z - b.z);
+    }
+
+    public static Position operator *(double a, Position b)
+    {
+        return new Position(a * b.x, a * b.y, a * b.z);
     }
 }
 

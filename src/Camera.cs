@@ -1,5 +1,5 @@
 public class Camera {
-    private Position position = new Position(0, 0, 0);
+    public Position position = new Position(0, 0, 0);
     private Orientation orientation = new Orientation(0, 0);
     private double fov = Math.PI;
 
