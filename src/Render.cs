@@ -69,9 +69,10 @@ public static class Render
         }
         double lightImpact = Position.dot(world.globalIllumination, -closestNormalVector);
         lightImpact = Math.Clamp(lightImpact, 0, 1);
-        byte r = (byte)(closestSphere.color.R * lightImpact);
-        byte g = (byte)(closestSphere.color.G * lightImpact);
-        byte b = (byte)(closestSphere.color.B * lightImpact);
+        // when the color is dark, we want to add 0.2 of the original color
+        byte r = (byte)(closestSphere.color.R * lightImpact * 0.8 + 0.2 * closestSphere.color.R);
+        byte g = (byte)(closestSphere.color.G * lightImpact * 0.8 + 0.2 * closestSphere.color.G);
+        byte b = (byte)(closestSphere.color.B * lightImpact * 0.8 + 0.2 * closestSphere.color.B);
         return new Rgba32(r, g, b);
     }
 }
