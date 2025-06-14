@@ -26,6 +26,11 @@ public struct Position
         return p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
     }
 
+    public static double distance(Position p1, Position p2)
+    {
+        return Math.Sqrt(Math.Pow(p2.x - p1.x, 2) + Math.Pow(p2.y - p1.y, 2) + Math.Pow(p2.z - p1.z, 2));
+    }
+
     public static Position operator +(Position a, Position b)
     {
         return new Position(a.x + b.x, a.y + b.y, a.z + b.z);
