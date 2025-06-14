@@ -15,8 +15,8 @@ public class Camera {
         Orientation direction = new Orientation(
             this.orientation.teta + this.fov / screen.width
                 * (x + 0.5d) - this.fov / 2d,
-            this.orientation.fi + verticalFov / screen.height
-                * (y + 0.5d) - verticalFov / 2d
+            this.orientation.fi - verticalFov / screen.height
+                * (y + 0.5d) + verticalFov / 2d
         );
         return direction.getVector();
     }

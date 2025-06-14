@@ -71,8 +71,8 @@ public struct Orientation
     public Position getVector()
     {
         return new Position(Math.Cos(this.fi) * Math.Cos(this.teta),
-                            Math.Cos(this.fi) * Math.Sin(this.teta),
-                            Math.Sin(this.fi));
+                            Math.Sin(this.fi),
+                            Math.Cos(this.fi) * Math.Sin(this.teta));
     }
 
     public override string ToString()
