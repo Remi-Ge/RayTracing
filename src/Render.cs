@@ -56,7 +56,7 @@ public static class Render
         {
             return new Rgba32(0, 0, 0);
         }
-
+        
         // Calculate color
         foreach (Sphere sphere in world.spheres)
         {
@@ -64,7 +64,9 @@ public static class Render
             double distance = Position.distance(rayOrigin, intersection);
             if (intersect && distance != 0)
             {
-                return new Rgba32(0, 0, 0);
+                return new Rgba32((byte)(0.2 * closestSphere.color.R),
+                    (byte)(0.2 * closestSphere.color.G),
+                    (byte)(0.2 * closestSphere.color.B));
             }
         }
         double lightImpact = Position.dot(world.globalIllumination, -closestNormalVector);
